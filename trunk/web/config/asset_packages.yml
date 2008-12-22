@@ -1,0 +1,11 @@
+--- 
+stylesheets: 
+- base: 
+  - core/layout
+javascripts: 
+- base:
+  - application
+  - prototype
+  - effects
+  - dragdrop
+  - controls
