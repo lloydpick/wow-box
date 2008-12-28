@@ -12,7 +12,7 @@ h2 { font: normal 1.6em Arial; color: #3D3C3B; margin: 0 0 15px; }
 h2#slogan { font-size: 1.3em; color: #808080; }
 p  { margin: 0 0 15px; line-height: 1.7em; }
 .clear { clear: both; }
-.wrap { margin: 0 auto; width: 900px; }
+.wrap { margin: 0 auto; width: 900px; padding-bottom: 30px }
 .background { background: url(/images/bg.jpg) no-repeat left 42px; }
 
 #search  { float: right; margin: 9px 0 0; width: 205px; }
