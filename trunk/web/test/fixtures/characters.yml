@@ -1,0 +1,26 @@
+# == Schema Information
+# Schema version: 20081223002010
+#
+# Table name: characters
+#
+#  id             :integer         not null, primary key
+#  name           :string(255)
+#  permalink      :string(255)
+#  user_id        :integer
+#  role_id        :integer
+#  talent_spec_id :integer
+#  guild_id       :integer
+#  race_id        :integer
+#  faction_id     :integer
+#  realm_id       :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value

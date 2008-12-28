@@ -1,0 +1,14 @@
+<h2>Realms</h2>
+
+<% @regions.each do |region| %>
+  <h3><%= region.area %></h3>
+  <table width="250px">
+    <% region.realms.each do |realm| %>
+      <tr>
+        <td><%= link_to(realm.name, realm_path(realm)) %></td>
+        <td><%= realm.realm_language.name %></td>
+        <td><%= realm.realm_type.shortname %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
