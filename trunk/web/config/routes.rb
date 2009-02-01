@@ -3,7 +3,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => "home", :action => "index"
 
-  map.resources :realms
+  map.resources :realms do |realms|
+    realms.resources :guilds
+  end
 
   # Operations
   map.namespace(:admin) do |admin|

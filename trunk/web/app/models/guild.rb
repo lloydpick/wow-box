@@ -19,4 +19,14 @@ class Guild < ActiveRecord::Base
   belongs_to :faction
   has_many :characters
 
+  # Extras
+  has_permalink :name
+
+  # Named Scopes
+  named_scope :by_name, { :order => 'name ASC' }
+
+  def to_param
+    self.permalink
+  end
+
 end

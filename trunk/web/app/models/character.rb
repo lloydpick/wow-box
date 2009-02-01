@@ -27,7 +27,13 @@ class Character < ActiveRecord::Base
   belongs_to :faction
   belongs_to :realm
 
+  # Extras
+  has_permalink :name
+
   # Validations
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :scope => [ :realm_id ]
+
+  # Scopes
+  named_scope :recent, lambda { { :conditions => ['updated_at < ?', 1.week.ago] } }
 
 end

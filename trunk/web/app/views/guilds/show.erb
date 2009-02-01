@@ -1,0 +1,40 @@
+<h2>
+  <%= @guild.name %>
+  <small>
+    (<%= @realm.name %> -
+    <%= @realm.region.area %> -
+    <%= @realm.realm_type.shortname %> -
+    <%= @realm.realm_language.code %>)
+  </small>
+</h2>
+
+<table width="250px">
+  <thead>
+    <th>Name</th>
+    <th>Race</th>
+    <th>Class</th>
+    <th>Talent Spec</th>
+  </thead>
+  <tbody>
+  <% @guild.characters.each do |member| %>
+    <tr>
+      <td><%= member.name %></td>
+      <td>
+        <% if member.race %>
+          <%= member.race.name %>
+        <% end %>
+      </td>
+      <td>
+        <% if member.role %>
+          <%= member.role.name %>
+        <% end %>
+      </td>
+      <td>
+        <% if member.talent_spec %>
+          <%= member.talent_spec.name %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

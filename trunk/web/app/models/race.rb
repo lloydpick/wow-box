@@ -17,4 +17,7 @@ class Race < ActiveRecord::Base
   belongs_to :faction
   has_many :characters
 
+  # Extras
+  has_permalink :name
+
 end

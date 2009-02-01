@@ -17,4 +17,7 @@ class TalentSpec < ActiveRecord::Base
   has_many :characters
   belongs_to :role
 
+  # Extras
+  has_permalink :name
+
 end

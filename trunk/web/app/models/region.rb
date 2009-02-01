@@ -16,4 +16,7 @@ class Region < ActiveRecord::Base
   # Associations
   has_many :realms
 
+  # Extras
+  has_permalink :code
+
 end

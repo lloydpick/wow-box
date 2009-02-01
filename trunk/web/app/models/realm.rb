@@ -22,6 +22,9 @@ class Realm < ActiveRecord::Base
   has_many :characters
   has_many :guilds
 
+  # Extras
+  has_permalink :name
+
   def to_param
     self.permalink
   end

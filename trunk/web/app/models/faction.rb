@@ -17,4 +17,7 @@ class Faction < ActiveRecord::Base
   has_many :guilds
   has_many :races
 
+  # Extras
+  has_permalink :name
+
 end

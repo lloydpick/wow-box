@@ -17,4 +17,7 @@ class RealmType < ActiveRecord::Base
   # Associations
   has_many :realms
 
+  # Extras
+  has_permalink :shortname
+
 end

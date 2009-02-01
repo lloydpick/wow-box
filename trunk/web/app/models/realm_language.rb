@@ -16,4 +16,7 @@ class RealmLanguage < ActiveRecord::Base
   # Associations
   has_many :realms
 
+  # Extras
+  has_permalink :name
+
 end

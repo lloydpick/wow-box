@@ -16,4 +16,7 @@ class Role < ActiveRecord::Base
   has_many :characters
   has_many :talent_specs
 
+  # Extras
+  has_permalink :name
+
 end
