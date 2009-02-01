@@ -6,11 +6,11 @@ namespace :wowbox do
     task :borgy => :environment do
       require 'wowr'
 
-      api = Wowr::API.new(:locale => 'eu', :caching => false)
-      char = api.get_character("Borgy", :realm => "Al'Akir")
-      print char.klass
-      print char.race
-      print char.faction
+      api = Wowr::API.new(:locale => 'eu', :caching => true)
+      c = api.get_character("Malm", :realm => "Al'Akir")
+      print c.klass
+      print c.race
+      print c.faction
 
     end
 
