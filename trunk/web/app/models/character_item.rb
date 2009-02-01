@@ -1,7 +1,7 @@
 # == Schema Information
 # Schema version: 20090201161128
 #
-# Table name: character_items
+# Table name: character_item
 #
 #  id           :integer         not null, primary key
 #  character_id :integer
@@ -16,7 +16,7 @@
 #  updated_at   :datetime
 #
 
-class CharacterItems < ActiveRecord::Base
+class CharacterItem < ActiveRecord::Base
 
   # Associations
   belongs_to :character
