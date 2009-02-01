@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090201161128
+# Schema version: 20090201170007
 #
 # Table name: character_datas
 #
@@ -40,6 +40,14 @@
 #  defenses_parry_percentage    :float
 #  defenses_block_percentage    :float
 #  defenses_resilience          :integer
+#  resistance_arcane            :integer
+#  resistance_fire              :integer
+#  resistance_frost             :integer
+#  resistance_holy              :integer
+#  resistance_nature            :integer
+#  resistance_shadow            :integer
+#  health                       :integer
+#  meta                         :integer
 #  created_at                   :datetime
 #  updated_at                   :datetime
 #

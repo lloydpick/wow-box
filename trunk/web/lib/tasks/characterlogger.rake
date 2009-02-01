@@ -7,7 +7,7 @@ namespace :wowbox do
       require 'wowr'
 
       api = Wowr::API.new(:locale => 'eu', :caching => true)
-      c = api.get_character("Malm", :realm => "Al'Akir")
+      c = api.get_character("Borgy", :realm => "Al'Akir")
       print c.klass
       print c.race
       print c.faction

@@ -1,7 +1,7 @@
 # == Schema Information
-# Schema version: 20090201161128
+# Schema version: 20090201170007
 #
-# Table name: character_item
+# Table name: character_items
 #
 #  id           :integer         not null, primary key
 #  character_id :integer
