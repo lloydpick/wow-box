@@ -27,7 +27,7 @@ class Character < ActiveRecord::Base
   belongs_to :faction
   belongs_to :realm
   has_many :character_items
-  has_many :character_data
+  has_many :character_datas
 
   # Extras
   has_permalink :name
