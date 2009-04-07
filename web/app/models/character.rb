@@ -37,6 +37,8 @@ class Character < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => [ :realm_id ]
 
   # Scopes
-  named_scope :recent, lambda { { :conditions => ['updated_at < ?', 1.week.ago] } }
+  named_scope :recent, lambda { { :conditions => ['updated_at > ?', 1.week.ago] } }
+  named_scope :needs_run, lambda {{ :conditions => ['updated_at = \'2009-01-01 00:00:01\'']}}
+  named_scope :order, lambda {{ :order => "id asc" }}
 
 end

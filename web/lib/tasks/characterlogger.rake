@@ -41,17 +41,30 @@ namespace :wowbox do
 
     desc "Go lookup one character on the armory that needs updating - ADVANCED STATS"
     task :get_advanced_for_oldest => :environment do
-      debug = true
+      debug = false
 
       print "loading wowr\n" if debug
       require 'wowr'
 
       print "finding character\n" if debug
-      #char = Character.recent.find(:first, :conditions => { :level => nil })
-      char = Character.find(1)
+      if debug
+        char = Character.find(3)
+      else
+        char = Character.needs_run.order.find(:first, :conditions => { :level => nil })
+      end
+
+      print "updating access time\n" if debug
+      char.updated_at = Time.now
+
+      print "saving character\n" if debug
+      char.save!
 
       print "creating api\n" if debug
       api = Wowr::API.new(:locale => 'eu', :caching => true)
+
+      sleep = rand(45)
+      print "sleeping for #{sleep}seconds\n" if debug
+      sleep(sleep)
 
       print "fetching player\n" if debug
       armory = api.get_character(char.name, :realm => char.realm.name)
@@ -120,8 +133,8 @@ namespace :wowbox do
       data.spell_hit_rating = armory.spell.hit_rating.value
       data.spell_hit_rating_percent = armory.spell.hit_rating.increased_hit_percent
       data.spell_crit_chance = armory.spell.arcane.crit_chance_percent
-      data.spell_speed = armory.spell.speed.haste_rating
-      data.spell_speed_percent = armory.spell.speed.percent_increase
+      data.spell_haste = armory.spell.speed.haste_rating
+      data.spell_haste_percent = armory.spell.speed.percent_increase
       data.spell_mana_regen_casting = armory.spell.mana_regen.casting
       data.spell_mana_regen_not_casting = armory.spell.mana_regen.not_casting
 
@@ -132,9 +145,29 @@ namespace :wowbox do
       data.defenses_block_percentage = armory.defenses.block.percent
       data.defenses_resilience = armory.defenses.resilience.value
 
+      print "updating resistances\n" if debug
+      data.resistance_arcane = armory.resistances["arcane"].value
+      data.resistance_fire = armory.resistances["fire"].value
+      data.resistance_frost = armory.resistances["frost"].value
+      data.resistance_holy = armory.resistances["holy"].value
+      data.resistance_nature = armory.resistances["nature"].value
+      data.resistance_shadow = armory.resistances["shadow"].value
+
       print "updating health/meta stats\n" if debug
       data.health = armory.health
       data.meta = armory.second_bar.effective
+
+      print "creating/finding/updating character gear\n" if debug
+      armory.items.each do |item|
+        gear = CharacterItem.find_or_create_by_character_id_and_item_slot_id(char.id, item.slot)
+        gear.item_id = item.id
+        gear.gem1_id = item.gems[0]
+        gear.gem2_id = item.gems[1]
+        gear.gem3_id = item.gems[2]
+        gear.icon = item.icon_base
+        gear.enchant_id = item.permanent_enchant
+        gear.save!
+      end
 
       print "setting access time\n" if debug
       data.updated_at = Time.now
